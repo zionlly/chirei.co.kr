@@ -32,42 +32,49 @@ img {
 .character-container {
   position: relative;
   width: 100%;
-  height: 35vh; /* 필요하면 30vh / 40vh로 조정 */
-  min-height: 220px; /* 너무 작아지지 않도록 최소값 */
-  max-height: 520px; /* 너무 커지지 않도록 최대값 */
-  z-index: 100;
-  pointer-events: none; /* 컨테이너 자체는 클릭 차단, 개별 char는 허용 */
+  height: 400px;
+  z-index: 100; /* 캐릭터 영역 레이어 */
 }
 
 .char-wrapper {
   position: absolute;
-  transform: translate(-50%, -50%);
-  pointer-events: auto;             /* 각 캐릭터는 이벤트 허용 */
   cursor: url("img/c_cursor.png") 8 2, pointer !important;
-  z-index: 1200;
-  will-change: transform, left, top;
+  z-index: 1200; /* 기본 캐릭터 레이어 */
 }
 
-/* 기본 좌표 — vw / vh 단위로 고정 (원하던 상대 위치 재현) */
-.char-wrapper.char1 { left: 52vw; top: 18vh; } /* 메인 캐릭터 상단 중앙 근처 */
-.char-wrapper.char2 { left: 87vw; top: 23vh; } /* 우측 상단 */
-.char-wrapper.char3 { left: 25vw; top: 80vh; } /* 좌측 하단 쪽 */
-.char-wrapper.char4 { left: 23vw; top: 20vh; } /* 좌측 상단 */
-.char-wrapper.char5 { left: 40vw; top: 65vh; } /* 중앙 하단 쪽 */
+/* 기본 배치 */
+.char-wrapper.char1 { left: 48%; top: 38%; }
+.char-wrapper.char2 { left: 85%; top: 58%; }
+.char-wrapper.char3 { left: 23%; top: 245%; }
+.char-wrapper.char4 { left: 20%; top: 55%; }
+.char-wrapper.char5 { left: 38%; top: 195%; }
 
-/* 캐릭터 크기 - 화면 높이에 비례하되 clamp로 제한 */
 .character {
-  display: block;
+  width: 110px;
   height: auto;
-  width: clamp(5.2vh, 9vh, 12vh); /* 최소 5.2vh, 권장 9vh, 최대 12vh */
+  display: block;
   animation: floatUpDown 3s ease-in-out infinite;
-  pointer-events: auto;
-  -webkit-user-drag: none;
 }
 
-/* 주요 캐릭터만 더 크게 */
-.char-wrapper.char1 .character {
-  width: clamp(8.5vh, 15vh, 20vh); /* 메인 캐릭터 비례 크기 */
+.char-wrapper.char1 .character { width: 170px; }
+
+.tooltip-img {
+  position: absolute;
+  bottom: 90%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  opacity: 0;
+  pointer-events: none; /* 말풍선 자체는 이벤트 차단 */
+  transition: opacity .3s ease, transform .3s ease;
+  height: 67px;
+  z-index: 1300; /* 캐릭터 위 */
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+  will-change: opacity, transform;
+}
+
+.char-wrapper:hover .tooltip-img {
+  opacity: 0.93;
+  transform: translateX(-50%) translateY(-15px);
 }
 
 @keyframes floatUpDown {
