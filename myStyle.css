@@ -1,0 +1,100 @@
+/* ================================
+   공통 스타일
+================================ */
+img {
+  -webkit-user-drag: none;   /* 크롬/사파리 */
+  -webkit-touch-callout: none; /* iOS 길게 누르기 메뉴 */
+  user-select: none;         /* 텍스트/이미지 선택 방지 */
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: url('img/cursor.png'), default;
+  font-family: 'roobert', yoon-px-pixman, sans-serif;
+}
+
+
+/* 기본 커서 */
+body, html {
+  cursor: url('img/cursor.png') 0 0, default;
+}
+
+/* 클릭 가능 */
+button, .clickable, #nextBtn [role="button"], a, #closeBtn, #shakingSign {
+  /* 8px 2px -> 0.8vh 0.2vh로 변환 (화면 높이에 따른 핫스팟 조정) */
+  cursor: url('img/c_cursor.png') 0.8vh 0.2vh, pointer;
+}
+
+/* 텍스트 입력 */
+input, textarea, .text-field {
+  /* 0 16px -> 0 1.6vh로 변환 */
+  cursor: url('img/t_cursor.png') 0 1.6vh, text;
+}
+
+/* 금지 커서 */
+.disabled, [disabled], .forbidden {
+  /* 12px 12px -> 1.2vh 1.2vh로 변환 */
+  cursor: url('img/s_cursor.png') 1.2vh 1.2vh, not-allowed;
+}
+
+.bg-img1 {
+  position: relative;
+  background-image: url('img/back3.png');
+  background-size: cover;        /* contain → cover로 변경 */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.shake-paused {
+  animation-play-state: paused !important;
+}
+
+:root{
+  /* 기본 위치(중앙 약간 아래 예시) */
+  --sign-left: 50vw;  /* → 오른쪽으로: 값 ↑, 왼쪽으로: 값 ↓ */
+  --sign-top:  90svh; /* → 아래로: 값 ↑, 위로: 값 ↓ */
+
+  /* px 단위 미세 조정 (필요시만 사용) */
+  --sign-dx: 0vw;   /* 픽셀 대신 뷰포트 너비 단위로 변경 */
+  --sign-dy: 0vh;   /* 픽셀 대신 뷰포트 높이 단위로 변경 */
+}
+
+#shakingSign{
+  position: fixed;
+  left: calc(var(--sign-left) + var(--sign-dx));
+  top:  calc(var(--sign-top)  + var(--sign-dy));
+  transform: translate(-50%, -100%) scale(1);
+  transform-origin: center top;
+  /* width: 250px; -> 13vw로 변환 (기본 화면 너비 기준 약 13% 차지하도록 설정) */
+  width: 13vw; 
+  height: auto; 
+  z-index: 10;
+  animation: shake 3.5s cubic-bezier(.4,0,.2,1) infinite;
+}
+#shakingSign:hover{
+  animation-play-state: paused;
+  transform: translate(-50%, -100%) scale(1.05);
+  filter: brightness(1.05);
+}
+/* keyframes 애니메이션은 transform 값만 사용하므로 vh/vw 단위 변경 불필요 */
+@keyframes shake{
+  0%{transform:translate(-50%,-100%) scale(1) rotate(0)}
+  10%{transform:translate(-50%,-100%) scale(1) rotate(16deg)}
+  20%{transform:translate(-50%,-100%) scale(1) rotate(-16deg)}
+  30%{transform:translate(-50%,-100%) scale(1) rotate(10deg)}
+  40%{transform:translate(-50%,-100%) scale(1) rotate(-10deg)}
+  55%{transform:translate(-50%,-100%) scale(1) rotate(6deg)}
+  70%{transform:translate(-50%,-100%) scale(1) rotate(-6deg)}
+  85%{transform:translate(-50%,-100%) scale(1) rotate(1deg)}
+  90%{transform:translate(-50%,-100%) scale(1) rotate(-1deg)}
+  100%{transform:translate(-50%,-100%) scale(1) rotate(0)}
+}
+

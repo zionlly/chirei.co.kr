@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>치레이</title>
+
+  <!-- 파비콘 (원하면 유지/수정) -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- 폰트 서버 미리연결 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Adobe Fonts (Typekit) -->
+  <script>
+    (function(d) {
+      var config = { kitId: 'ovw4zmy', scriptTimeout: 3000, async: true },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"), f = false,
+          s = d.getElementsByTagName("script")[0], a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function () {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true; clearTimeout(t);
+        try { Typekit.load(config); } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="myStyle2.css">
+</head>
+<body>
+  <div class="container">
+    <img src="img/lay.png" alt="레이 캐릭터" class="lay-character" />
+    <div class="dialogue-box">
+      <!-- 반드시 typewriter 클래스 포함 -->
+      <div id="typewriter" class="text typewriter"></div>
+      <button id="nextBtn" style="display:none;">다음</button>
+    </div>
+    <div id="answerBox"></div>
+  </div>
+
+  <!-- 스크립트 -->
+  <script src="myScript2.js"></script>
+</body>
+</html>

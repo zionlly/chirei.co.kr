@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>치레이</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="myStyle3.css">
+  <script src="myScript3.js" defer></script>
+
+  <!-- Adobe Fonts -->
+  <script>
+    (function(d) {
+      var config = { kitId: 'ovw4zmy', scriptTimeout: 3000, async: true },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"), f = false,
+          s = d.getElementsByTagName("script")[0], a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function () {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true; clearTimeout(t);
+        try { Typekit.load(config); } catch (e) { }
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+</head>
+<body>
+
+<!-- 캐릭터 -->
+<div class="character-container">
+  <div class="char-wrapper char1" data-popup="popup1">
+    <img src="img/C_r.png" alt="캐릭터 1" class="character" />
+    <img src="img/tooltip-text1.png" alt="치레이란?" class="tooltip-img" />
+  </div>
+  <div class="char-wrapper char2" data-popup="popup2">
+    <img src="img/C_gg.png" alt="캐릭터 2" class="character" />
+    <img src="img/tooltip-text2.png" alt="오프라인 매장" class="tooltip-img" />
+  </div>
+  <div class="char-wrapper char3" data-popup="popup3">
+    <img src="img/C_k.png" alt="캐릭터 3" class="character" />
+    <img src="img/tooltip-text3.png" alt="컨설팅 예약" class="tooltip-img" />
+  </div>
+  <div class="char-wrapper char4" data-popup="popup4">
+    <img src="img/C_d.png" alt="캐릭터 4" class="character" />
+    <img src="img/tooltip-text4.png" alt="굿즈" class="tooltip-img" />
+  </div>
+  <div class="char-wrapper char5" data-popup="popup5">
+    <img src="img/C_g.png" alt="캐릭터 5" class="character" />
+    <img src="img/tooltip-text5.png" alt="제품" class="tooltip-img" />
+  </div>
+</div>
+
+<!-- 팝업 1: Brand -->
+<div id="popup1" class="modal">
+  <div class="modal-content pos-top-left">
+    <div class="modal-titlebar">
+      <div class="title-with-icon">
+        <img src="img/icon.png" alt="" class="title-icon" />
+        Chirei -Brand Page
+      </div>
+      <button class="close" aria-label="닫기">&times;</button>
+    </div>
+    <div class="popup-body"><!-- JS가 렌더링 --></div>
+  </div>
+</div>
+
+<!-- 팝업 2: Offline -->
+<div id="popup2" class="modal">
+  <div class="modal-content pos-top-right">
+    <div class="modal-titlebar">
+      <div class="title-with-icon">
+        <img src="img/icon.png" alt="" class="title-icon" />
+        Chirei -Offline Page
+      </div>
+      <button class="close" aria-label="닫기">&times;</button>
+    </div>
+    <div class="popup-body"><!-- JS가 렌더링 --></div>
+  </div>
+</div>
+
+<!-- 팝업 3: Consulting -->
+<div id="popup3" class="modal">
+  <div class="modal-content pos-bottom-left">
+    <div class="modal-titlebar">
+      <div class="title-with-icon">
+        <img src="img/icon.png" alt="" class="title-icon" />
+        Chirei -Consulting Page
+      </div>
+      <button class="close" aria-label="닫기">&times;</button>
+    </div>
+    <div id="popup3-container" class="popup3-container">
+      <div id="popup3-content" class="popup3-content"></div>
+      <button id="popup3-nextBtn" class="popup3-btn">다음</button>
+      <div id="reservation-complete" class="reservation-complete" style="display:none;">
+        <div class="reservation-message">
+          <p>예약이 완료되었습니다. 감사합니다!</p>
+          <button id="reservation-closeBtn" class="popup3-btn">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 팝업 4 -->
+<div id="popup4" class="modal">
+  <div class="modal-content pos-bottom-right">
+    <div class="modal-titlebar">
+      <div class="title-with-icon">
+        <img src="img/icon.png" alt="" class="title-icon" />
+        Chirei -Goods Page
+      </div>
+      <button class="close" aria-label="닫기">&times;</button>
+    </div>
+    <div class="popup-body"><!-- 내용 준비중 --></div>
+  </div>
+</div>
+
+<!-- 팝업 5 -->
+<div id="popup5" class="modal">
+  <div class="modal-content pos-center">
+    <div class="modal-titlebar">
+      <div class="title-with-icon">
+        <img src="img/icon.png" alt="" class="title-icon" />
+        Chirei -Product Page
+      </div>
+      <button class="close" aria-label="닫기">&times;</button>
+    </div>
+
+    <!-- 제품 페이지 컨테이너 -->
+    <div id="popup5-body" class="popup-body"><!-- JS가 렌더링 --></div>
+
+    <!-- 디테일 페이지에서만 보이는 '뒤로 가기' -->
+    <div class="popup5-nav">
+      <button id="popup5-backBtn" class="popup5-btn" style="display:none;">뒤로 가기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 항상 보이는 '처음으로' -->
+<button id="homeBtn" aria-label="처음으로 돌아가기">처음으로</button>
+
+</body>
+</html>

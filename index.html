@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>치레이</title>
+  <link rel="favicon" href="favicon.ico">
+  <link rel="stylesheet" href="myStyle.css" />
+  <script src="myScript.js"></script>
+
+  <!-- Adobe Fonts (Typekit) 로드 -->
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'ovw4zmy',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h = d.documentElement,
+      t = setTimeout(function () {
+        h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+      }, config.scriptTimeout),
+      tk = d.createElement("script"),
+      f = false,
+      s = d.getElementsByTagName("script")[0],
+      a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function () {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true; clearTimeout(t);
+        try { Typekit.load(config); } catch (e) { }
+      };
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+</head>
+<body>
+    <header class="bg-img1">
+      <!-- 흔들리는 팻말 -->
+      <a href="index2.html">
+        <img src="img/sign.png" alt="테스트 시작하기" id="shakingSign">
+      </a>
+    </header>
+    </body>
+    </html>
+  </body>
